@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Claim — {{ item.title }}{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="form-card">
+    <h1>Claim "{{ item.title }}"</h1>
+    <p class="page-sub">Explain why this item is yours. Include specific details only the owner would know.</p>
+    <div id="form-msg" class="form-msg"></div>
+    <form id="claim-form" data-item-id="{{ item.id }}">
+      <div class="field">
+        <label for="message">Your message</label>
+        <textarea id="message" name="message" required placeholder="Describe the item and where/when you lost it..."></textarea>
+      </div>
+      <div class="field">
+        <label for="proof_details">Proof details (optional)</label>
+        <textarea id="proof_details" name="proof_details" placeholder="Serial number, unique marks, contents..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Submit claim</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/claim.js') }}"></script>
+{% endblock %}
