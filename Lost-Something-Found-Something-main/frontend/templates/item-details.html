@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }} — LostFound{% endblock %}
+{% block content %}
+<section class="container page">
+  <div class="form-card" style="max-width:640px;">
+    <span class="badge badge-{{ item.type }}">{{ item.type }}</span>
+    <span class="badge badge-{{ item.status }}">{{ item.status }}</span>
+    <h1 style="margin:12px 0 4px;">{{ item.title }}</h1>
+    <p class="page-sub">Reported by {{ item.owner.name if item.owner else "a user" }}</p>
+
+    {% if item.image_url %}
+    <img src="{{ item.image_url }}" alt="{{ item.title }}" style="border-radius:8px;margin:16px 0;max-height:320px;object-fit:cover;width:100%;">
+    {% endif %}
+
+    <p>{{ item.description or "No description provided." }}</p>
+    <table class="data" style="margin-top:16px;">
+      <tr><th>Category</th><td>{{ item.category or "—" }}</td></tr>
+      <tr><th>Location</th><td>{{ item.location or "—" }}</td></tr>
+      <tr><th>Date</th><td>{{ item.date_occurred or "—" }}</td></tr>
+    </table>
+
+    {% if item.status == "open" %}
+    <a href="{{ url_for('claim_page', item_id=item.id) }}" class="btn btn-primary" style="margin-top:20px;">
+      {{ "This is mine / I found it" if item.type == "lost" else "I think this is mine" }}
+    </a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Browse items — LostFound{% endblock %}
+{% block content %}
+<section class="container page">
+  <h1 class="page-title">Browse items</h1>
+  <p class="page-sub">Search reported lost and found items.</p>
+
+  <div class="filters">
+    <select id="filter-type">
+      <option value="">All types</option>
+      <option value="lost">Lost</option>
+      <option value="found">Found</option>
+    </select>
+    <select id="filter-status">
+      <option value="open">Open</option>
+      <option value="claimed">Claimed</option>
+      <option value="resolved">Resolved</option>
+      <option value="">Any status</option>
+    </select>
+    <input type="text" id="filter-q" placeholder="Search by title, location...">
+  </div>
+
+  <div id="items-grid" class="grid"></div>
+  <div id="items-empty" class="empty-state" style="display:none;">No items match your search.</div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/items.js') }}"></script>
+{% endblock %}
