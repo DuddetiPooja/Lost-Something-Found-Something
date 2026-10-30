@@ -1,0 +1,8 @@
+SECRET_KEY=change-this-to-a-random-string
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_HOST=db
+DB_PORT=5432
+DB_NAME=lostfound
+# Or set the full URL instead of the DB_* vars above:
+# DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/lostfound

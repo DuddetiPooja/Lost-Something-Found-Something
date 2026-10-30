@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Report a found item — LostFound{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="form-card">
+    <h1>Report a found item</h1>
+    <div id="form-msg" class="form-msg"></div>
+    <form id="found-form" enctype="multipart/form-data">
+      <div class="field">
+        <label for="title">Item title</label>
+        <input type="text" id="title" name="title" placeholder="e.g. Silver keychain" required>
+      </div>
+      <div class="field">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option>Electronics</option>
+          <option>Bags & wallets</option>
+          <option>ID / Documents</option>
+          <option>Keys</option>
+          <option>Clothing</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="location">Where you found it</label>
+        <input type="text" id="location" name="location" placeholder="e.g. Cafeteria">
+      </div>
+      <div class="field">
+        <label for="date_occurred">Date found</label>
+        <input type="date" id="date_occurred" name="date_occurred">
+      </div>
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Color, brand, any identifying details..."></textarea>
+      </div>
+      <div class="field">
+        <label for="image">Photo (optional)</label>
+        <input type="file" id="image" name="image" accept="image/*">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Submit report</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/found.js') }}"></script>
+{% endblock %}

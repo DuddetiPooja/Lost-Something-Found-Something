@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — LostFound{% endblock %}
+{% block content %}
+<section class="container page">
+  <h1 class="page-title">Your dashboard</h1>
+  <p class="page-sub">Items you've reported and claims you've submitted.</p>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="my-items">My items</div>
+    <div class="tab" data-tab="my-claims">My claims</div>
+  </div>
+
+  <div id="my-items" class="tab-panel">
+    <table class="data" style="margin-top:16px;">
+      <thead><tr><th>Title</th><th>Type</th><th>Status</th><th>Reported</th><th></th></tr></thead>
+      <tbody id="my-items-body"></tbody>
+    </table>
+    <div id="my-items-empty" class="empty-state" style="display:none;">You haven't reported any items yet.</div>
+  </div>
+
+  <div id="my-claims" class="tab-panel" style="display:none;">
+    <table class="data" style="margin-top:16px;">
+      <thead><tr><th>Item</th><th>Message</th><th>Status</th><th>Submitted</th></tr></thead>
+      <tbody id="my-claims-body"></tbody>
+    </table>
+    <div id="my-claims-empty" class="empty-state" style="display:none;">You haven't submitted any claims yet.</div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

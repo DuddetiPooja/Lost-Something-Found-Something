@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Admin — LostFound{% endblock %}
+{% block content %}
+<section class="container page">
+  <h1 class="page-title">Admin panel</h1>
+  <p class="page-sub">Approve new items, review claims, and manage all reported items.</p>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="pending-items">Pending items</div>
+    <div class="tab" data-tab="pending-claims">Pending claims</div>
+    <div class="tab" data-tab="all-items">All items</div>
+  </div>
+
+  <div id="pending-items" class="tab-panel">
+    <table class="data" style="margin-top:16px;">
+      <thead><tr><th>Title</th><th>Type</th><th>Owner</th><th>Actions</th></tr></thead>
+      <tbody id="admin-pending-items-body"></tbody>
+    </table>
+    <div id="admin-pending-items-empty" class="empty-state" style="display:none;">No items waiting for approval.</div>
+  </div>
+
+  <div id="pending-claims" class="tab-panel" style="display:none;">
+    <table class="data" style="margin-top:16px;">
+      <thead><tr><th>Item</th><th>Claimant</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="admin-claims-body"></tbody>
+    </table>
+    <div id="admin-claims-empty" class="empty-state" style="display:none;">No claims yet.</div>
+  </div>
+
+  <div id="all-items" class="tab-panel" style="display:none;">
+    <table class="data" style="margin-top:16px;">
+      <thead><tr><th>Title</th><th>Type</th><th>Owner</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="admin-items-body"></tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}
